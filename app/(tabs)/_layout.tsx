@@ -3,6 +3,7 @@ import { Link, Tabs } from "expo-router";
 import { Pressable, useColorScheme } from "react-native";
 
 import Colors from "../../constants/Colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -27,10 +28,16 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="home-lightning-bolt"
+              size={24}
+              color={color}
+            />
+          ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -48,10 +55,42 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="plays"
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Plays",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="music-circle"
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="explore"
+        options={{
+          title: "Explore",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="music-circle"
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="library"
+        options={{
+          title: "Library",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="music-circle"
+              size={24}
+              color={color}
+            />
+          ),
         }}
       />
     </Tabs>
