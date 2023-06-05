@@ -1,4 +1,8 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
@@ -8,7 +12,13 @@ import {
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
-import { useColorScheme, Image, Text, View } from "react-native";
+import {
+  useColorScheme,
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export {
@@ -42,35 +52,34 @@ export default function RootLayout() {
 }
 
 const HeaderComponent = () => {
-  const image = "https://download.logo.wine/logo/YouTube/YouTube-Logo.wine.png";
-  const avatar =
+  const image = require("../assets/images/logo.png");
+  const avatar: string =
     "https://yt3.ggpht.com/SBra9X0UPsNzyDjGcvN4iw2pb5Qku_3qFd1figMt48J7rUdU8mJYHPHAx0t6d0E6wLcUU__nZjg=s68-c-k-c0x00ffffff-no-rj";
 
   return (
-    <SafeAreaView className="flex-row justify-between mx-4 mb-2">
-      <View className="flex-row items-center space-x-1">
-        {/* <Image source={image} style={{ height: 28, width: 40 }} /> */}
-        <FontAwesome name="youtube-play" size={28} color="red" />
-        <Text className="text-black font-semibold tracking-tighter text-lg">
-          YouTube
-        </Text>
+    <View
+      className="flex flex-row items-center justify-between px-4 py-2 pt-6"
+      style={{ backgroundColor: "#282828" }}
+    >
+      <Image source={image} style={{ width: 150, height: 40 }} />
+
+      <View className="flex flex-row items-center space-x-4">
+        <TouchableOpacity>
+          <Ionicons name="search-outline" size={24} color="white" />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Ionicons name="md-notifications-outline" size={24} color="white" />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Image
+            source={{ uri: avatar }}
+            style={{ width: 30, height: 30, borderRadius: 15 }}
+          />
+        </TouchableOpacity>
       </View>
-      <View className="flex-row items-center space-x-3">
-        <MaterialCommunityIcons
-          name="bell"
-          size={24}
-          color="black"
-          style={{ marginRight: 8 }}
-        />
-        <FontAwesome
-          name="search"
-          size={24}
-          color="black"
-          style={{ marginRight: 8 }}
-        />
-        <Image source={{ uri: avatar }} className="h-7 w-7 rounded-full" />
-      </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
