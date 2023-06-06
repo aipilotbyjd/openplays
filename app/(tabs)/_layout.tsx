@@ -39,14 +39,16 @@ const Header = () => {
     return categories.map((category, index) => (
       <TouchableOpacity
         key={index}
-        className={`rounded px-2 py-2 ${
+        className={`px-2 py-1 rounded-lg ${
           selectedCategory === category ? "bg-white" : ""
         }`}
         onPress={() => handleCategorySelection(category)}
       >
         <Text
           className={`${
-            selectedCategory === category ? "text-black" : "text-white"
+            selectedCategory === category
+              ? "text-black font-bold"
+              : "text-white font-medium"
           }`}
         >
           {category}
