@@ -60,10 +60,10 @@ const Header = () => {
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View
-        className="flex flex-row items-center justify-between px-4 py-2"
+        className="flex flex-row items-center justify-between px-2 py-2"
         style={{ backgroundColor: "#282828" }}
       >
-        <View className="flex flex-row space-x-4">
+        <View className="flex flex-row space-x-2">
           {renderCategoryButtons()}
         </View>
       </View>
