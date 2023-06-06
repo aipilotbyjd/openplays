@@ -6,7 +6,7 @@ import StoryList from "../../components/stories/storylist";
 
 export default function TabOneScreen() {
   return (
-    <View className="flex">
+    <View className="flex" style={{ backgroundColor: "#282828" }}>
       <StoryList />
     </View>
   );
