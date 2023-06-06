@@ -41,7 +41,7 @@ const StoryList = () => {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{ paddingHorizontal: 16 }}
+      contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 10 }}
     >
       {stories.map((story) => (
         <StorySingle key={story.id} image={story.image} name={story.name} />
