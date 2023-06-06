@@ -1,9 +1,20 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Link, Tabs } from "expo-router";
-import { Pressable, useColorScheme } from "react-native";
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  useColorScheme,
+} from "react-native";
 
 import Colors from "../../constants/Colors";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import { SetStateAction, useState } from "react";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -14,6 +25,49 @@ function TabBarIcon(props: {
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
+
+const Header = () => {
+  const categories = ["Home", "Trending", "Subscriptions", "Library"];
+  const [selectedCategory, setSelectedCategory] = useState("Home");
+
+  const handleCategorySelection = (category: SetStateAction<string>) => {
+    setSelectedCategory(category);
+    // Perform any additional actions based on the selected category
+  };
+
+  const renderCategoryButtons = () => {
+    return categories.map((category, index) => (
+      <TouchableOpacity
+        key={index}
+        className={`rounded px-2 py-2 ${
+          selectedCategory === category ? "bg-white" : ""
+        }`}
+        onPress={() => handleCategorySelection(category)}
+      >
+        <Text
+          className={`${
+            selectedCategory === category ? "text-black" : "text-white"
+          }`}
+        >
+          {category}
+        </Text>
+      </TouchableOpacity>
+    ));
+  };
+
+  return (
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <View
+        className="flex flex-row items-center justify-between px-4 py-2"
+        style={{ backgroundColor: "#282828" }}
+      >
+        <View className="flex flex-row space-x-4">
+          {renderCategoryButtons()}
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -38,20 +92,7 @@ export default function TabLayout() {
               color={color}
             />
           ),
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          header: Header,
         }}
       />
       <Tabs.Screen
