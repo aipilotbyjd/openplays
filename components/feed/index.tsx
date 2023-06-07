@@ -53,10 +53,16 @@ const Feed = () => {
   ];
   return (
     <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-      <Text className="flex font-extrabold text-white pb-3 text-xl">Feed</Text>
-      {videos.map((video) => (
-        <VideoItem key={video.id} video={video} />
-      ))}
+      <View>
+        <Text className="flex font-extrabold text-white pb-3 text-xl">
+          Feed
+        </Text>
+      </View>
+      <View>
+        {videos.map((video) => (
+          <VideoItem key={video.id} video={video} />
+        ))}
+      </View>
     </View>
   );
 };

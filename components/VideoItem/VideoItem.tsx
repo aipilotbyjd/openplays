@@ -34,11 +34,15 @@ const VideoItem: React.FC<VideoItemProps> = ({ video }) => {
   };
 
   return (
-    <View style={{ marginBottom: 16 }}>
+    <View style={{ marginBottom: 16 }} className="flex items-center">
       <Pressable onPress={handleVideoPress}>
         <Image
           source={{ uri: video.thumbnailUrl }}
-          style={{ width: screenWidth, height: screenWidth * 0.56 }} // Assuming 16:9 aspect ratio for the video thumbnail
+          style={{
+            width: screenWidth - 20,
+            height: screenWidth * 0.54,
+          }} // Assuming 16:9 aspect ratio for the video thumbnail
+          className="rounded-md"
         />
 
         <View style={{ padding: 4 }}>
