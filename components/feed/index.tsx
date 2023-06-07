@@ -6,8 +6,7 @@ const Feed = () => {
   const videos = [
     {
       id: "1",
-      thumbnailUrl:
-        "https://i.ytimg.com/vi/TTjgLB0v4EA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA6gCjm4PgBCopePFbZGwHp7flwKA",
+      thumbnailUrl: "https://img.youtube.com/vi/X7lRGozX8KQ/mqdefault.jpg",
       channelAvatarUrl:
         "https://yt3.ggpht.com/SBra9X0UPsNzyDjGcvN4iw2pb5Qku_3qFd1figMt48J7rUdU8mJYHPHAx0t6d0E6wLcUU__nZjg=s68-c-k-c0x00ffffff-no-rj",
       title: "Next.js Full Course for Beginners | Nextjs 13 Tutorial | 7 Hours",

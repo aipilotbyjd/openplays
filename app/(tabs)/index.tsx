@@ -13,6 +13,8 @@ export default function TabOneScreen() {
         <StoryList />
         <SliderList />
         <Feed />
+        <SliderList />
+        <Feed />
       </View>
     </ScrollView>
   );
