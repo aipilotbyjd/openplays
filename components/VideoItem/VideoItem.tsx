@@ -58,6 +58,7 @@ const VideoItem: React.FC<VideoItemProps> = ({ video }) => {
                 fontSize: 14,
                 fontWeight: "bold",
               }}
+              className="text-white"
             >
               {video.title}
             </Text>
