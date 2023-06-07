@@ -8,12 +8,12 @@ import Feed from "../../components/feed";
 
 export default function TabOneScreen() {
   return (
-    <View className="flex" style={{ backgroundColor: "#222222" }}>
-      <ScrollView>
+    <ScrollView>
+      <View className="flex" style={{ backgroundColor: "#222222" }}>
         <StoryList />
         <SliderList />
-      </ScrollView>
-      <Feed />
-    </View>
+        <Feed />
+      </View>
+    </ScrollView>
   );
 }
