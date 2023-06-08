@@ -1,55 +1,70 @@
-import { ScrollView } from "react-native";
+import { ScrollView, TouchableOpacity, View, Text } from "react-native";
 import React from "react";
 import SingleDisplay from "../singledisplay";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const DisplayPlaylist = () => {
   const playlists = [
     {
       id: 1,
       image:
-        "https://yt3.ggpht.com/ytc/AGIKgqPAl3A8_-KRf7MfN3oCr-NbQNY0A0By7tenqALJdA=s68-c-k-c0x00ffffff-no-rj",
-      name: "John",
+        "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/5855db642ffa6a24efd860394aad2d1b_500x500.jpg",
+      name: "Bollywood Top 40",
+      subtitle: "Rajbha Gadhavi",
     },
     {
       id: 2,
       image:
-        "https://yt3.ggpht.com/Q5wDZkznd7zSD2RWT3HU9sqbwNkkkJtXgTxulaJoLAEl-U9-gbcIm6Of1rASj9RBotOedTih=s68-c-k-c0x00ffffff-no-rj",
+        "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/981c1d0eb5e54ddbeeb33e09c51f0e8d_500x500.jpg",
       name: "Emma",
+      subtitle: "Emma and Sun the",
     },
     {
       id: 3,
       image:
-        "https://yt3.ggpht.com/VaLfhmjNN3XY3Bft1hl0GK9xQh-beoYlopkfCs3nNI91g8O4PXOw2jjYzlsYoDCf7XCN5MKx=s68-c-k-c0x00ffffff-no-rj",
+        "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/3457a857669b045ee423fa5cea2dd760_500x500.jpg",
       name: "Alex",
+      subtitle: "Alex would",
     },
     // Add more stories as needed
     {
       id: 4,
       image:
-        "https://yt3.ggpht.com/j01juFvKwHnKHdgcklpPKLkfNBuGbGJKLBwXVhbN_5LeCU3S9bTsHBL-MKPRQCjpZpfPJ_dJ=s68-c-k-c0x00ffffff-no-rj",
+        "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/812be67c4e96f655616c68add82d4227_500x500.jpg",
       name: "t series",
+      subtitle: "T series series",
     },
     {
       id: 5,
       image:
-        "https://yt3.ggpht.com/j01juFvKwHnKHdgcklpPKLkfNBuGbGJKLBwXVhbN_5LeCU3S9bTsHBL-MKPRQCjpZpfPJ_dJ=s68-c-k-c0x00ffffff-no-rj",
+        "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/c6dd473e19190e1aca31898b59ea4da3_500x500.jpg",
       name: "Block",
+      subtitle: "Block Title",
     },
   ];
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 10 }}
-    >
-      {playlists.map((playlist) => (
-        <SingleDisplay
-          key={playlist.id}
-          image={playlist.image}
-          name={playlist.name}
-        />
-      ))}
-    </ScrollView>
+    <View>
+      <View className="flex flex-row items-center justify-between ml-4">
+        <Text className="font-bold text-white text-base">Top Playlists</Text>
+        <TouchableOpacity>
+          <MaterialIcons name="keyboard-arrow-right" size={32} color="white" />
+        </TouchableOpacity>
+      </View>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 8, paddingVertical: 10 }}
+      >
+        {playlists.map((playlist) => (
+          <SingleDisplay
+            key={playlist.id}
+            image={playlist.image}
+            name={playlist.name}
+            subtitle={playlist.subtitle}
+          />
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 

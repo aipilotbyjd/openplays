@@ -1,16 +1,16 @@
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
-const SingleDisplay = ({ image, name }: any) => {
+const SingleDisplay = ({ image, name, subtitle }: any) => {
+  const truncatedTitle = name.length > 14 ? name.substring(0, 15) + ".." : name;
+  const truncatedSubtitle =
+    subtitle.length > 14 ? subtitle.substring(0, 14) + ".." : subtitle;
   return (
-    <View className="mr-4">
-      <View className="w-24 h-24 rounded-lg overflow-hidden">
-        <Image source={{ uri: image }} className="w-full h-full" />
-      </View>
-      <Text className="mt-2 text-xs text-center text-white font-semibold">
-        {name}
-      </Text>
-    </View>
+    <TouchableOpacity className="p-2">
+      <Image source={{ uri: image }} className="w-32 h-32 rounded-md" />
+      <Text className="font-bold text-white text-xs">{truncatedTitle}</Text>
+      <Text className="text-white text-xs">{truncatedSubtitle}</Text>
+    </TouchableOpacity>
   );
 };
 
