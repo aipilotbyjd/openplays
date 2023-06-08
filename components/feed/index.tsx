@@ -51,7 +51,7 @@ const Feed = () => {
     },
   ];
   return (
-    <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+    <View style={{ paddingHorizontal: 16 }}>
       <View>
         <Text className="flex font-extrabold text-white pb-3 text-xl">
           Feed
