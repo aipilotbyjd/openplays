@@ -6,6 +6,7 @@ import StoryList from "../../components/stories/storylist";
 import SliderList from "../../components/slider/sliderlist";
 import Feed from "../../components/feed";
 import DisplayPlaylist from "../../components/playlist/displayplaylist";
+import DisplayArtists from "../../components/artists";
 
 export default function TabOneScreen() {
   return (
@@ -15,6 +16,8 @@ export default function TabOneScreen() {
         <SliderList />
         <Feed />
         <DisplayPlaylist />
+        <Feed />
+        <DisplayArtists />
         <Feed />
       </View>
     </ScrollView>
