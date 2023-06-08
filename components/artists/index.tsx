@@ -50,7 +50,7 @@ const DisplayArtists = () => {
         contentContainerStyle={{ paddingHorizontal: 8, paddingVertical: 10 }}
       >
         {playlists.map((playlist) => (
-          <TouchableOpacity className="p-3">
+          <TouchableOpacity key={playlist.id} className="p-3">
             <Image
               source={{ uri: playlist.image }}
               className="w-28 h-28 rounded-full"
