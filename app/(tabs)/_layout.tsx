@@ -117,6 +117,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="explore" size={24} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tabs.Screen
