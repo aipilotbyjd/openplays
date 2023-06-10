@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 const Library = () => {
-  const categories = ["બધા", "Playists", "History", "Artists"];
+  const categories = ["બધા", "History", "Playists", "Artists"];
   const [selectedCategory, setSelectedCategory] = useState("બધા");
 
   const handleCategorySelection = (category: any) => {
