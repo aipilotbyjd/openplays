@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import History from "../../components/history";
-import DisplayPlaylist from "../../components/playlistli/displayplaylist";
+import DisplayPlaylist from "../../components/saved/displayplaylist";
 
 const Library = () => {
   const categories = ["ઇતિહાસ", "મનપસંદ", "સાચવેલ", "ડાઉનલોડ કરેલ"];
