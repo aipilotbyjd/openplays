@@ -10,12 +10,25 @@ import History from "../../components/history";
 import DisplayPlaylist from "../../components/playlistli/displayplaylist";
 
 const Library = () => {
-  const categories = ["બધા", "History", "Playists", "Artists"];
+  const categories = ["બધા", "ઇતિહાસ", "મનપસંદ", "સાચવેલ"];
   const [selectedCategory, setSelectedCategory] = useState("બધા");
 
   const handleCategorySelection = (category: any) => {
     setSelectedCategory(category);
     // Perform any additional actions based on the selected category
+  };
+
+  const renderContent = () => {
+    switch (selectedCategory) {
+      case "ઇતિહાસ":
+        return <History />;
+      case "મનપસંદ":
+        return <History />;
+      case "સાચવેલ":
+        return <History />;
+      default:
+        return <DisplayPlaylist />;
+    }
   };
 
   return (
@@ -49,15 +62,9 @@ const Library = () => {
           </View>
         </View>
       </ScrollView>
-      {selectedCategory && selectedCategory === "History" ? (
-        <ScrollView>
-          <History />
-        </ScrollView>
-      ) : (
-        <ScrollView style={{ backgroundColor: "#222222" }}>
-          <DisplayPlaylist />
-        </ScrollView>
-      )}
+      <ScrollView style={{ backgroundColor: "#222222" }}>
+        {renderContent()}
+      </ScrollView>
     </View>
   );
 };
