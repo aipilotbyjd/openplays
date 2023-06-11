@@ -43,28 +43,18 @@ const DisplayLiked = () => {
     },
   ];
   return (
-    <View>
-      <View className="flex flex-row items-center justify-between ml-4">
-        <Text className="font-bold text-white text-base">Top Playlists</Text>
-        <TouchableOpacity>
-          <MaterialIcons name="keyboard-arrow-right" size={32} color="white" />
-        </TouchableOpacity>
-      </View>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 8, paddingVertical: 10 }}
-      >
-        {playlists.map((playlist) => (
-          <SingleDisplay
-            key={playlist.id}
-            image={playlist.image}
-            name={playlist.name}
-            subtitle={playlist.subtitle}
-          />
-        ))}
-      </ScrollView>
-    </View>
+    <ScrollView
+      contentContainerStyle={{ paddingHorizontal: 8, paddingVertical: 10 }}
+    >
+      {playlists.map((playlist) => (
+        <SingleDisplay
+          key={playlist.id}
+          image={playlist.image}
+          name={playlist.name}
+          subtitle={playlist.subtitle}
+        />
+      ))}
+    </ScrollView>
   );
 };
 
