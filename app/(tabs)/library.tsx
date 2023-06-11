@@ -10,8 +10,8 @@ import History from "../../components/history";
 import DisplayPlaylist from "../../components/playlistli/displayplaylist";
 
 const Library = () => {
-  const categories = ["બધા", "ઇતિહાસ", "મનપસંદ", "સાચવેલ"];
-  const [selectedCategory, setSelectedCategory] = useState("બધા");
+  const categories = ["ઇતિહાસ", "મનપસંદ", "સાચવેલ", "ડાઉનલોડ કરેલ"];
+  const [selectedCategory, setSelectedCategory] = useState("ઇતિહાસ");
 
   const handleCategorySelection = (category: any) => {
     setSelectedCategory(category);
@@ -23,9 +23,11 @@ const Library = () => {
       case "ઇતિહાસ":
         return <History />;
       case "મનપસંદ":
-        return <History />;
+        return <DisplayPlaylist />;
       case "સાચવેલ":
-        return <History />;
+        return <DisplayPlaylist />;
+      case "ડાઉનલોડ કરેલ":
+        return <DisplayPlaylist />;
       default:
         return <DisplayPlaylist />;
     }
