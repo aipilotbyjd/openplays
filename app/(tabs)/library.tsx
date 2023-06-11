@@ -37,12 +37,8 @@ const Library = () => {
   };
 
   return (
-    <View>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ backgroundColor: "#222222" }}
-      >
+    <View style={{ backgroundColor: "#222222" }}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View className="flex items-center px-2 py-2">
           <View className="flex flex-row space-x-2">
             {categories.map((category, index) => (
@@ -67,9 +63,7 @@ const Library = () => {
           </View>
         </View>
       </ScrollView>
-      <ScrollView style={{ backgroundColor: "#222222" }}>
-        {renderContent()}
-      </ScrollView>
+      <ScrollView>{renderContent()}</ScrollView>
     </View>
   );
 };
