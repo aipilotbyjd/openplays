@@ -8,6 +8,9 @@ import {
 } from "react-native";
 import History from "../../components/history";
 import DisplayPlaylist from "../../components/saved/displayplaylist";
+import DisplayLiked from "../../components/liked/displayplaylist";
+import DisplaySaved from "../../components/saved/displayplaylist";
+import DisplayDown from "../../components/downloaded/displayplaylist";
 
 const Library = () => {
   const categories = ["ઇતિહાસ", "મનપસંદ", "સાચવેલ", "ડાઉનલોડ કરેલ"];
@@ -23,11 +26,11 @@ const Library = () => {
       case "ઇતિહાસ":
         return <History />;
       case "મનપસંદ":
-        return <DisplayPlaylist />;
+        return <DisplayLiked />;
       case "સાચવેલ":
-        return <DisplayPlaylist />;
+        return <DisplaySaved />;
       case "ડાઉનલોડ કરેલ":
-        return <DisplayPlaylist />;
+        return <DisplayDown />;
       default:
         return <DisplayPlaylist />;
     }

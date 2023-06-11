@@ -3,7 +3,7 @@ import React from "react";
 import SingleDisplay from "../singledisplay";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const DisplayPlaylist = () => {
+const DisplaySaved = () => {
   const playlists = [
     {
       id: 1,
@@ -58,4 +58,4 @@ const DisplayPlaylist = () => {
   );
 };
 
-export default DisplayPlaylist;
+export default DisplaySaved;
