@@ -1,9 +1,17 @@
 import { ScrollView, TouchableOpacity, View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import SingleDisplay from "../singledisplay";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const DisplayLiked = () => {
+  const categories = ["songs", "playlists", "artists"];
+  const [selectedCategory, setSelectedCategory] = useState("songs");
+
+  const handleCategorySelection = (category: any) => {
+    setSelectedCategory(category);
+    // Perform any additional actions based on the selected category
+  };
+
   const playlists = [
     {
       id: 1,
@@ -43,18 +51,45 @@ const DisplayLiked = () => {
     },
   ];
   return (
-    <ScrollView
-      contentContainerStyle={{ paddingHorizontal: 8, paddingVertical: 10 }}
-    >
-      {playlists.map((playlist) => (
-        <SingleDisplay
-          key={playlist.id}
-          image={playlist.image}
-          name={playlist.name}
-          subtitle={playlist.subtitle}
-        />
-      ))}
-    </ScrollView>
+    <View>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View className="flex items-center px-2 py-2">
+          <View className="flex flex-row space-x-2">
+            {categories.map((category, index) => (
+              <TouchableOpacity
+                key={index}
+                className={`px-2 py-1 rounded-3xl ${
+                  selectedCategory === category ? "bg-white" : ""
+                }`}
+                onPress={() => handleCategorySelection(category)}
+              >
+                <Text
+                  className={`${
+                    selectedCategory === category
+                      ? "text-black font-bold"
+                      : "text-white font-medium"
+                  }`}
+                >
+                  {category}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </ScrollView>
+      <ScrollView
+        contentContainerStyle={{ paddingHorizontal: 8, paddingVertical: 10 }}
+      >
+        {playlists.map((playlist) => (
+          <SingleDisplay
+            key={playlist.id}
+            image={playlist.image}
+            name={playlist.name}
+            subtitle={playlist.subtitle}
+          />
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 
