@@ -63,7 +63,7 @@ const Library = () => {
           </View>
         </View>
       </ScrollView>
-      <ScrollView>{renderContent()}</ScrollView>
+      <ScrollView className="mb-12">{renderContent()}</ScrollView>
     </View>
   );
 };
