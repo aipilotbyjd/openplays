@@ -1,13 +1,21 @@
-import { Text, View, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import { Text, View, Image, Dimensions } from "react-native";
+import React, { useRef } from "react";
 import { Video } from "expo-av";
 
 const PlaysVO = () => {
-  const videook: any =
-    "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4";
+  const width = Dimensions.get("window").width;
+  const playbackInstance = useRef(null);
+  const videook: any = require("../../../assets/video/vidok.mp4");
   return (
     <View className="flex flex-1 items-center">
-      <Video source={videook} />
+      <Video
+        ref={playbackInstance}
+        source={videook}
+        isLooping
+        className="h-48"
+        style={{ width: width - 15 }}
+        shouldPlay
+      />
     </View>
   );
 };
