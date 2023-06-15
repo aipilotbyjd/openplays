@@ -3,7 +3,7 @@ import PlaysVO from "../../components/playssongs/plays";
 
 export default function Plays() {
   return (
-    <View>
+    <View className="flex">
       <PlaysVO />
     </View>
   );
