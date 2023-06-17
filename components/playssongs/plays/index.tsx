@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
   ImageBackground,
   TouchableOpacity,
   Dimensions,
+  Animated,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -22,6 +23,40 @@ const MusicPlayer = () => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [isRepeat, setIsRepeat] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const opacityValue = new Animated.Value(0);
+
+  const textLines = [
+    "Hey girl, are you all right",
+    "Come near me, I won't bite",
+    "I find you sexy",
+    "That's why I'm awake whole night",
+    // Add more lines if needed
+  ];
+
+  useEffect(() => {
+    if (currentLineIndex < textLines.length) {
+      animateText();
+    }
+  }, [currentLineIndex]);
+
+  const animateText = () => {
+    Animated.sequence([
+      Animated.timing(opacityValue, {
+        toValue: 1,
+        duration: 500, // Adjust the duration as needed
+        useNativeDriver: true,
+      }),
+      Animated.delay(3000), // Adjust the delay between lines as needed
+      Animated.timing(opacityValue, {
+        toValue: 0,
+        duration: 500, // Adjust the duration as needed
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      setCurrentLineIndex((prevIndex) => prevIndex + 1);
+    });
+  };
 
   const handleTogglePlay = () => {
     setIsPlaying((prevState) => !prevState);
@@ -44,8 +79,8 @@ const MusicPlayer = () => {
   const fixHeight = windowHeight / 3;
 
   return (
-    <View className="flex">
-      <View className="w-full h-[25.333333%]">
+    <View className="flex pb-56">
+      <View className="w-full h-[30%]">
         <LinearGradient
           colors={["#3CA55C", "#B5AC49"]}
           start={{ x: 0, y: 0 }}
@@ -58,19 +93,42 @@ const MusicPlayer = () => {
               className="text-white text-xs ml-2"
               style={{ fontFamily: "LilitaOne" }}
             >
-              Comrade Anthem (From "Dear Comrade")
+              Next.js Full Course for Beginners | Nextjs 13 Tutorial | 7 Hours
             </Text>
+          </View>
+
+          <View className="flex flex-row items-center justify-center py-2">
+            {textLines.map((line, index) => (
+              <Animated.View
+                key={index}
+                style={{
+                  opacity: opacityValue,
+                  marginBottom: 8,
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 14,
+                    fontFamily: "LilitaOne",
+                  }}
+                >
+                  {index === currentLineIndex ? line : ""}
+                </Text>
+              </Animated.View>
+            ))}
           </View>
         </LinearGradient>
       </View>
-      <View className="w-full h-[33.333333%]">
+      <View className="w-full h-[50%]">
         <ImageBackground
           source={require("../../../assets/images/song.jpg")}
           resizeMode="cover"
-          style={{ width: "100%", height: fixHeight }}
+          style={{ width: "100%" }}
+          className="h-[100%]"
         />
       </View>
-      <View className="w-full h-[33.333333%]">
+      <View className="w-full h-[20%]">
         <LinearGradient
           colors={["#3CA55C", "#B5AC49"]}
           start={{ x: 0, y: 0 }}
@@ -138,8 +196,8 @@ const MusicPlayer = () => {
                 <Entypo name="dots-three-vertical" size={24} color="white" />
               </View>
             </View>
-            <View className="flex flex-row items-center">
-              <View>
+            <View className="flex flex-row items-center px-1 mb-[-60]">
+              <View className="flex w-1/10">
                 <TouchableOpacity onPress={handleTogglePlay}>
                   {isPlaying ? (
                     <FontAwesome5 name="pause" size={24} color="white" />
@@ -148,10 +206,10 @@ const MusicPlayer = () => {
                   )}
                 </TouchableOpacity>
               </View>
-              <View>
+              <View className="flex w-9/10">
                 <Slider
                   style={{
-                    width: windowWidth - 40,
+                    width: windowWidth * 0.86,
                     height: windowHeight * 0.06,
                   }}
                   minimumValue={0}
