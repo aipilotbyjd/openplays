@@ -15,10 +15,21 @@ import {
   MaterialIcons,
   Octicons,
 } from "@expo/vector-icons";
+import Slider from "@react-native-community/slider";
 
 const MusicPlayer = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
   const [isRepeat, setIsRepeat] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleTogglePlay = () => {
+    setIsPlaying((prevState) => !prevState);
+  };
+
+  const handleToggleLike = () => {
+    setIsLiked((prevState) => !prevState);
+  };
 
   const handleToggleFollow = () => {
     setIsFollowing((prevState) => !prevState);
@@ -86,7 +97,13 @@ const MusicPlayer = () => {
             </View>
             <View className="flex flex-row justify-between items-center">
               <View className="flex flex-row space-x-8 items-center justify-start">
-                <Ionicons name="md-heart" size={24} color="white" />
+                <TouchableOpacity onPress={handleToggleLike}>
+                  <Ionicons
+                    name="md-heart"
+                    size={24}
+                    color={isLiked ? "red" : "white"}
+                  />
+                </TouchableOpacity>
                 <Octicons name="comment" size={24} color="white" />
                 <Ionicons
                   name="ios-share-social-sharp"
@@ -108,6 +125,29 @@ const MusicPlayer = () => {
                   )}
                 </TouchableOpacity>
                 <Entypo name="dots-three-vertical" size={24} color="white" />
+              </View>
+            </View>
+            <View className="flex flex-row items-center">
+              <View>
+                <TouchableOpacity onPress={handleTogglePlay}>
+                  {isPlaying ? (
+                    <FontAwesome5 name="pause" size={24} color="white" />
+                  ) : (
+                    <FontAwesome5 name="play" size={24} color="white" />
+                  )}
+                </TouchableOpacity>
+              </View>
+              <View>
+                <Slider
+                  style={{
+                    width: windowWidth - 40,
+                    height: windowHeight * 0.06,
+                  }}
+                  minimumValue={0}
+                  maximumValue={1}
+                  minimumTrackTintColor="#fff8dc"
+                  maximumTrackTintColor="#f8f8ff"
+                />
               </View>
             </View>
           </View>
