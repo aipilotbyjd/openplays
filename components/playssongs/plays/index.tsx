@@ -7,13 +7,25 @@ import {
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { FontAwesome5 } from "@expo/vector-icons";
+import {
+  Entypo,
+  FontAwesome5,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+  Octicons,
+} from "@expo/vector-icons";
 
 const MusicPlayer = () => {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [isRepeat, setIsRepeat] = useState(false);
 
   const handleToggleFollow = () => {
     setIsFollowing((prevState) => !prevState);
+  };
+
+  const handleToggleRepeat = () => {
+    setIsRepeat((prevState) => !prevState);
   };
 
   const windowWidth = Dimensions.get("window").width;
@@ -59,7 +71,7 @@ const MusicPlayer = () => {
                 Comrade Anthem
               </Text>
             </View>
-            <View className="flex flex-row space-x-2 items-center">
+            <View className="flex flex-row space-x-2 items-center py-2">
               <Text className="text-white text-xs">Rajbha Gadhavi</Text>
               <TouchableOpacity
                 onPress={handleToggleFollow}
@@ -71,6 +83,32 @@ const MusicPlayer = () => {
                   {isFollowing ? "Following" : "Follow"}
                 </Text>
               </TouchableOpacity>
+            </View>
+            <View className="flex flex-row justify-between items-center">
+              <View className="flex flex-row space-x-8 items-center justify-start">
+                <Ionicons name="md-heart" size={24} color="white" />
+                <Octicons name="comment" size={24} color="white" />
+                <Ionicons
+                  name="ios-share-social-sharp"
+                  size={24}
+                  color="white"
+                />
+              </View>
+              <View className="flex flex-row space-x-8 items-center">
+                <MaterialCommunityIcons
+                  name="cloud-download-outline"
+                  size={24}
+                  color="white"
+                />
+                <TouchableOpacity onPress={handleToggleRepeat}>
+                  {isRepeat ? (
+                    <MaterialIcons name="repeat-one" size={24} color="white" />
+                  ) : (
+                    <MaterialIcons name="repeat" size={24} color="white" />
+                  )}
+                </TouchableOpacity>
+                <Entypo name="dots-three-vertical" size={24} color="white" />
+              </View>
             </View>
           </View>
         </LinearGradient>
