@@ -53,11 +53,11 @@ const MusicPlayer = () => {
           className="absolute"
           style={{ width: windowWidth, height: fixHeight }}
         >
-          <View className="flex flex-row items-center px-2">
-            <TouchableOpacity>
-              <FontAwesome5 name="chevron-left" size={24} color="white" />
-            </TouchableOpacity>
-            <Text className="text-white text-xs ml-2 items-center justify-center">
+          <View className="flex flex-row items-center justify-center py-2">
+            <Text
+              className="text-white text-xs ml-2"
+              style={{ fontFamily: "LilitaOne" }}
+            >
               Comrade Anthem (From "Dear Comrade")
             </Text>
           </View>
@@ -80,17 +80,28 @@ const MusicPlayer = () => {
         >
           <View className="flex-1">
             <View className="flex">
-              <Text className="text-white text-lg font-bold">
+              <Text
+                className="text-white text-lg"
+                style={{ fontFamily: "LilitaOne" }}
+              >
                 Comrade Anthem
               </Text>
             </View>
             <View className="flex flex-row space-x-2 items-center py-2">
-              <Text className="text-white text-xs">Rajbha Gadhavi</Text>
+              <Text
+                className="text-white text-xs"
+                style={{ fontFamily: "LilitaOne" }}
+              >
+                Rajbha Gadhavi
+              </Text>
               <TouchableOpacity
                 onPress={handleToggleFollow}
                 className="flex border border-white rounded-3xl"
               >
-                <Text className="text-white text-[10px] px-2 font-bold text-center">
+                <Text
+                  className="text-white text-[10px] px-2 text-center"
+                  style={{ fontFamily: "LilitaOne" }}
+                >
                   {isFollowing ? "Following" : "Follow"}
                 </Text>
               </TouchableOpacity>
