@@ -44,31 +44,33 @@ const MusicPlayer = () => {
   const fixHeight = windowHeight / 3;
 
   return (
-    <View className="flex flex-col">
-      <View className="w-full h-[33.333333%]">
+    <View className="flex">
+      <View className="w-full h-[25.333333%]">
         <LinearGradient
           colors={["#3CA55C", "#B5AC49"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          className="absolute flex-row items-center px-4"
+          className="absolute"
           style={{ width: windowWidth, height: fixHeight }}
         >
-          <TouchableOpacity>
-            <FontAwesome5 name="chevron-left" size={24} color="white" />
-          </TouchableOpacity>
-          <Text className="text-white text-xs ml-2">
-            Comrade Anthem (From "Dear Comrade")
-          </Text>
+          <View className="flex flex-row items-center px-2">
+            <TouchableOpacity>
+              <FontAwesome5 name="chevron-left" size={24} color="white" />
+            </TouchableOpacity>
+            <Text className="text-white text-xs ml-2 items-center justify-center">
+              Comrade Anthem (From "Dear Comrade")
+            </Text>
+          </View>
         </LinearGradient>
       </View>
       <View className="w-full h-[33.333333%]">
         <ImageBackground
           source={require("../../../assets/images/song.jpg")}
           resizeMode="cover"
-          style={{ width: windowWidth, height: fixHeight }}
+          style={{ width: "100%", height: fixHeight }}
         />
       </View>
-      <View className="w-full h-[33.333333%] bottom-10">
+      <View className="w-full h-[33.333333%]">
         <LinearGradient
           colors={["#3CA55C", "#B5AC49"]}
           start={{ x: 0, y: 0 }}
@@ -88,15 +90,13 @@ const MusicPlayer = () => {
                 onPress={handleToggleFollow}
                 className="flex border border-white rounded-3xl"
               >
-                <Text
-                  className={`text-white text-[10px] px-2 font-bold text-center`}
-                >
+                <Text className="text-white text-[10px] px-2 font-bold text-center">
                   {isFollowing ? "Following" : "Follow"}
                 </Text>
               </TouchableOpacity>
             </View>
             <View className="flex flex-row justify-between items-center">
-              <View className="flex flex-row space-x-8 items-center justify-start">
+              <View className="flex flex-row space-x-8 items-center">
                 <TouchableOpacity onPress={handleToggleLike}>
                   <Ionicons
                     name="md-heart"
