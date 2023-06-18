@@ -21,6 +21,7 @@ import Slider from "@react-native-community/slider";
 interface Song {
   id: string;
   name: string;
+  fullname: string;
   artist: string;
   duration: string;
   genre: string;
@@ -115,7 +116,7 @@ const MusicPlayer = (props: PlaysVOProps) => {
                 className="text-white text-xs ml-2"
                 style={{ fontFamily: "LilitaOne" }}
               >
-                Next.js Full Course for Beginners | Nextjs 13 Tutorial | 7 Hours
+                {post ? post.item.fullname : undefined}
               </Text>
             </View>
 

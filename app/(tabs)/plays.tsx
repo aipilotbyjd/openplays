@@ -9,6 +9,7 @@ const height = Dimensions.get("window").height;
 interface Song {
   id: string;
   name: string;
+  fullname: string;
   artist: string;
   duration: string;
   genre: string;
@@ -21,6 +22,8 @@ const Plays = () => {
     {
       id: "1",
       name: "Dear Comrade",
+      fullname:
+        "Next.js Full Course for Beginners | Nextjs 13 Tutorial | 7 Hours",
       artist: "Rajbha Gadhavi",
       duration: "3:45",
       genre: "Pop",
@@ -29,6 +32,7 @@ const Plays = () => {
     {
       id: "2",
       name: "Song 2",
+      fullname: "Song 2",
       artist: "Artist 2",
       duration: "4:20",
       genre: "Rock",
@@ -37,6 +41,7 @@ const Plays = () => {
     {
       id: "3",
       name: "Song 3",
+      fullname: "Song 3",
       artist: "Artist 3",
       duration: "2:55",
       genre: "Hip Hop",
@@ -45,6 +50,7 @@ const Plays = () => {
     {
       id: "4",
       name: "Song 4",
+      fullname: "Song 4",
       artist: "Artist 4",
       duration: "3:30",
       genre: "Electronic",
@@ -53,6 +59,7 @@ const Plays = () => {
     {
       id: "5",
       name: "Song 5",
+      fullname: "Song 5",
       artist: "Artist 5",
       duration: "5:10",
       genre: "R&B",
