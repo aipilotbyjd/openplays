@@ -42,6 +42,7 @@ const MusicPlayer = (props: PlaysVOProps) => {
   const opacityValue = new Animated.Value(0);
   const [post, setPost] = useState<PlaysVOProps | null>(null);
   const [sound, setSound] = useState<Audio.Sound | null>(null);
+  const [isAudio, setIsAudio] = useState(false);
 
   useEffect(() => {
     if (props) {
