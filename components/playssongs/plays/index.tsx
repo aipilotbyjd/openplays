@@ -46,7 +46,6 @@ const MusicPlayer = (props: PlaysVOProps) => {
   useEffect(() => {
     if (props) {
       setPost(() => props);
-      console.log(post);
     }
   }, [props]);
 
