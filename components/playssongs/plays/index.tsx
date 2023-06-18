@@ -82,9 +82,10 @@ const MusicPlayer = () => {
     <View className="flex pb-56">
       <View className="w-full h-[30%]">
         <LinearGradient
-          colors={["#3CA55C", "#B5AC49"]}
+          colors={["#3CA55C", "#B5AC49", "#6CCE8D"]}
           start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          locations={[0.1, 0.9, 0.1]}
           className="absolute"
           style={{ width: windowWidth, height: fixHeight }}
         >
@@ -130,9 +131,10 @@ const MusicPlayer = () => {
       </View>
       <View className="w-full h-[20%]">
         <LinearGradient
-          colors={["#3CA55C", "#B5AC49"]}
+          colors={["#3CA55C", "#B5AC49", "#46FFF9"]}
           start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          locations={[0, 1, 0]}
           className="absolute flex-row items-center px-4"
           style={{ width: windowWidth, height: fixHeight }}
         >
