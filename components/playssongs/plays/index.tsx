@@ -39,6 +39,7 @@ interface PlaysVOProps {
 }
 
 const MusicPlayer = (props: PlaysVOProps) => {
+  // State variables
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
@@ -49,20 +50,15 @@ const MusicPlayer = (props: PlaysVOProps) => {
   const [post, setPost] = useState<PlaysVOProps | null>(null);
   const [sound, setSound] = useState<Audio.Sound | null>(null);
   const [isAudio, setIsAudio] = useState(true);
+  const [sliderValue, setSliderValue] = useState(0);
+  const [duration, setDuration] = useState(0);
 
+  // Effects
   useEffect(() => {
     if (props) {
       setPost(() => props);
     }
   }, [props]);
-
-  const textLines = [
-    "Hey girl, are you all right",
-    "Come near me, I won't bite",
-    "I find you sexy",
-    "That's why I'm awake whole night",
-    // Add more lines if needed
-  ];
 
   useEffect(() => {
     if (currentLineIndex < textLines.length) {
@@ -78,6 +74,62 @@ const MusicPlayer = (props: PlaysVOProps) => {
         }
       : undefined;
   }, [sound]);
+
+  useEffect(() => {
+    if (sound) {
+      const updateAudio = (playbackStatus: any) => {
+        if (playbackStatus.isLoaded && playbackStatus.isPlaying) {
+          const position = playbackStatus.positionMillis;
+          const duration = playbackStatus.durationMillis;
+          console.log(position + duration);
+          setSliderValue(position);
+          setDuration(duration);
+        }
+      };
+
+      sound.setOnPlaybackStatusUpdate(updateAudio);
+    }
+  }, [sound]);
+
+  useEffect(() => {
+    if (sound) {
+      sound.setOnPlaybackStatusUpdate((playbackStatus: any) => {
+        if (playbackStatus.didJustFinish) {
+          sound.replayAsync();
+        }
+      });
+    }
+  }, [sound]);
+  const textLines = [
+    "Hey girl, are you all right",
+    "Come near me, I won't bite",
+    "I find you sexy",
+    "That's why I'm awake whole night",
+    // Add more lines if needed
+  ];
+
+  const handleSliderValueChange = async (value: number) => {
+    setSliderValue(value);
+
+    if (sound) {
+      const status = await sound.getStatusAsync();
+
+      if (!status.isLoaded) {
+        // Handle the case where the audio status is not loaded
+        return;
+      }
+
+      const duration: any = status.durationMillis;
+      const position = value * duration;
+      await sound.setPositionAsync(position);
+
+      // Update the playback status based on the new position
+      const updatedStatus = await sound.getStatusAsync();
+      if (updatedStatus && updatedStatus.isLoaded) {
+        setIsPlaying(updatedStatus.isPlaying);
+      }
+    }
+  };
 
   const animateText = () => {
     Animated.sequence([
@@ -303,6 +355,8 @@ const MusicPlayer = (props: PlaysVOProps) => {
                     maximumValue={1}
                     minimumTrackTintColor="#fff8dc"
                     maximumTrackTintColor="#f8f8ff"
+                    onValueChange={handleSliderValueChange}
+                    value={sliderValue} // Upda
                   />
                 </View>
               </View>
