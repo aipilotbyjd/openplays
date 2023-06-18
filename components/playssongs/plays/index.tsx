@@ -67,28 +67,32 @@ const MusicPlayer = (props: PlaysVOProps) => {
   }, [currentLineIndex]);
 
   useEffect(() => {
-    return sound
-      ? () => {
-          console.log("Unloading Sound");
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
+    let isMounted = true;
 
-  useEffect(() => {
-    if (sound) {
-      const updateAudio = (playbackStatus: any) => {
-        if (playbackStatus.isLoaded && playbackStatus.isPlaying) {
-          const position = playbackStatus.positionMillis;
-          const duration = playbackStatus.durationMillis;
-          console.log(position + duration);
+    const updateAudio = (playbackStatus: any) => {
+      if (playbackStatus.isLoaded && playbackStatus.isPlaying) {
+        const position = playbackStatus.positionMillis;
+        const duration = playbackStatus.durationMillis;
+        console.log(position+duration);
+        if (isMounted) {
           setSliderValue(position);
           setDuration(duration);
         }
-      };
+      }
+    };
 
+    if (sound) {
       sound.setOnPlaybackStatusUpdate(updateAudio);
     }
+
+    return () => {
+      isMounted = false;
+
+      if (sound) {
+        console.log("Unloading Sound");
+        sound.unloadAsync();
+      }
+    };
   }, [sound]);
 
   useEffect(() => {
