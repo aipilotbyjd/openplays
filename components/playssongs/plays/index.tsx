@@ -16,7 +16,13 @@ import {
   MaterialIcons,
   Octicons,
 } from "@expo/vector-icons";
-import { Audio, InterruptionModeIOS, InterruptionModeAndroid } from "expo-av";
+import {
+  Audio,
+  InterruptionModeIOS,
+  InterruptionModeAndroid,
+  Video,
+  ResizeMode,
+} from "expo-av";
 import Slider from "@react-native-community/slider";
 
 interface Song {
@@ -144,10 +150,10 @@ const MusicPlayer = (props: PlaysVOProps) => {
       <View className="flex pb-56">
         <View className="w-full h-[30%]">
           <LinearGradient
-            colors={["#3CA55C", "#B5AC49", "#6CCE8D"]}
+            colors={["#3CA55C", "#B5AC49"]}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
-            locations={[0.1, 0.9, 0.1]}
+            locations={[0.1, 0.9]}
             className="absolute"
             style={{ width: windowWidth, height: fixHeight }}
           >
@@ -184,12 +190,25 @@ const MusicPlayer = (props: PlaysVOProps) => {
           </LinearGradient>
         </View>
         <View className="w-full h-[50%]">
-          <ImageBackground
-            source={require("../../../assets/images/song.jpg")}
-            resizeMode="cover"
-            style={{ width: "100%" }}
-            className="h-[120%] pt-10"
-          />
+          {isAudio ? (
+            <ImageBackground
+              source={require("../../../assets/images/song.jpg")}
+              resizeMode="cover"
+              style={{ width: "100%" }}
+              className="h-[120%] pt-10"
+            />
+          ) : (
+            <Video
+              source={{
+                uri: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+              }} // Replace with your video URL
+              resizeMode={ResizeMode.CONTAIN}
+              shouldPlay
+              isLooping
+              style={{ width: "100%" }}
+              className="h-[150%] pt-10"
+            />
+          )}
         </View>
         <View className="w-full h-[20%]">
           <LinearGradient
