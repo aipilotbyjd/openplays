@@ -126,7 +126,7 @@ const MusicPlayer = () => {
           source={require("../../../assets/images/song.jpg")}
           resizeMode="cover"
           style={{ width: "100%" }}
-          className="h-[100%]"
+          className="h-[120%] pt-10"
         />
       </View>
       <View className="w-full h-[20%]">
@@ -135,7 +135,7 @@ const MusicPlayer = () => {
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           locations={[0, 1, 0]}
-          className="absolute flex-row items-center px-4"
+          className="absolute flex-row items-center px-4 top-10 pb-24"
           style={{ width: windowWidth, height: fixHeight }}
         >
           <View className="flex-1">
