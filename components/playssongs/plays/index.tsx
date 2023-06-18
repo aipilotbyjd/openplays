@@ -16,6 +16,7 @@ import {
   MaterialIcons,
   Octicons,
 } from "@expo/vector-icons";
+import { Audio, InterruptionModeIOS, InterruptionModeAndroid } from "expo-av";
 import Slider from "@react-native-community/slider";
 
 interface Song {
@@ -33,12 +34,14 @@ interface PlaysVOProps {
 
 const MusicPlayer = (props: PlaysVOProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentSong, setCurrentSong] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
   const [isRepeat, setIsRepeat] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const opacityValue = new Animated.Value(0);
   const [post, setPost] = useState<PlaysVOProps | null>(null);
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
 
   useEffect(() => {
     if (props) {
@@ -61,6 +64,15 @@ const MusicPlayer = (props: PlaysVOProps) => {
     }
   }, [currentLineIndex]);
 
+  useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   const animateText = () => {
     Animated.sequence([
       Animated.timing(opacityValue, {
@@ -79,8 +91,36 @@ const MusicPlayer = (props: PlaysVOProps) => {
     });
   };
 
-  const handleTogglePlay = () => {
-    setIsPlaying((prevState) => !prevState);
+  const handleTogglePlay = async () => {
+    try {
+      await Audio.setAudioModeAsync({
+        allowsRecordingIOS: false,
+        staysActiveInBackground: true,
+        interruptionModeIOS: InterruptionModeIOS.DuckOthers,
+        playsInSilentModeIOS: true,
+        shouldDuckAndroid: true,
+        interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
+        playThroughEarpieceAndroid: false,
+      });
+
+      if (sound) {
+        if (isPlaying) {
+          await sound.pauseAsync();
+        } else {
+          await sound.playAsync();
+        }
+        setIsPlaying((prevIsPlaying) => !prevIsPlaying);
+      } else {
+        const { sound: audioSound } = await Audio.Sound.createAsync(
+          { uri: "https://domainback.000webhostapp.com/thalapathy.mp3" },
+          { shouldPlay: true }
+        );
+        setSound(audioSound);
+        setIsPlaying(true);
+      }
+    } catch (error) {
+      console.log("Error handling audio:", error);
+    }
   };
 
   const handleToggleLike = () => {
