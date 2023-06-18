@@ -352,11 +352,11 @@ const MusicPlayer = (props: PlaysVOProps) => {
                       height: windowHeight * 0.06,
                     }}
                     minimumValue={0}
-                    maximumValue={1}
+                    maximumValue={duration}
                     minimumTrackTintColor="#fff8dc"
                     maximumTrackTintColor="#f8f8ff"
                     onValueChange={handleSliderValueChange}
-                    value={sliderValue} // Upda
+                    value={sliderValue}
                   />
                 </View>
               </View>
