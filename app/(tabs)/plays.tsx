@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { View, Dimensions, FlatList } from "react-native";
 import MusicPlays from "../../components/playssongs/plays";
+import { Stack } from "expo-router";
 
 const backgroundColor = "#806A56";
 const width = Dimensions.get("window").width;
@@ -74,6 +75,11 @@ const Plays = () => {
 
   return (
     <>
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+      />
       <FlatList
         ref={flatListRef}
         data={songs}
