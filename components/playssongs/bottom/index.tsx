@@ -21,7 +21,7 @@ const Bottom = () => {
         <ImageBackground
           source={require("../../../assets/images/song.jpg")}
           resizeMode="cover"
-          style={{ width: "100%", opacity: 1, height: fixHeight }}
+          style={{ width: "100%", opacity: 1, height: fixHeight + 40 }}
         />
       ) : (
         <Video

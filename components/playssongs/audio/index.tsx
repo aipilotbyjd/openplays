@@ -115,6 +115,17 @@ const AudioPlay = (audiopost: any) => {
         style={{ width: windowWidth, height: fixHeight }}
       >
         <View className="flex-1">
+          <TouchableOpacity
+            onPress={handleToggleFollow}
+            className="flex border border-white w-36 rounded-3xl"
+          >
+            <Text
+              className="text-white text-[12px] px-2 text-center"
+              style={{ fontFamily: "LilitaOne" }}
+            >
+              Watch Full Song
+            </Text>
+          </TouchableOpacity>
           <View className="flex">
             <Text
               className="text-white text-lg"
