@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   image: {
     width: windowWidth,
     height: windowHeight,
-    opacity: 0.8,
+    opacity: 0.95,
   },
   upperContainer: {
     height: upperHeight, // Set a smaller height for the upperContainer
