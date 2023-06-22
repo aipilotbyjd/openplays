@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { View, Dimensions, FlatList } from "react-native";
-import PlaysVO from "../../components/playssongs/plays";
+import MusicPlays from "../../components/playssongs/plays";
 
 const backgroundColor = "#806A56";
 const width = Dimensions.get("window").width;
@@ -69,11 +69,11 @@ const Plays = () => {
   ];
 
   const renderItem = ({ item }: { item: Song }) => {
-    return <PlaysVO item={item} />;
+    return <MusicPlays item={item} />;
   };
 
   return (
-    <View style={{ backgroundColor }}>
+    <>
       <FlatList
         ref={flatListRef}
         data={songs}
@@ -84,7 +84,7 @@ const Plays = () => {
         pagingEnabled={true}
         showsVerticalScrollIndicator={false}
       />
-    </View>
+    </>
   );
 };
 
