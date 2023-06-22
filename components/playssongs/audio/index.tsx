@@ -22,7 +22,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const fixHeight = windowHeight / 3; // Adjust the height values as needed
 
-const AudioPlay = (post: any) => {
+const AudioPlay = (audiopost: any) => {
   // State variables
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
@@ -120,7 +120,9 @@ const AudioPlay = (post: any) => {
               className="text-white text-lg"
               style={{ fontFamily: "LilitaOne" }}
             >
-              {post ? post.item.name : "unknown name"}
+              {audiopost && audiopost.audiopost && audiopost.audiopost.name
+                ? audiopost.audiopost.name
+                : "unknown name"}
             </Text>
           </View>
           <View className="flex flex-row space-x-2 items-center py-2">
@@ -128,7 +130,9 @@ const AudioPlay = (post: any) => {
               className="text-white text-xs"
               style={{ fontFamily: "LilitaOne" }}
             >
-              {post ? post.item.artist : "unknown artist"}
+              {audiopost && audiopost.audiopost && audiopost.audiopost.name
+                ? audiopost.audiopost.name
+                : "unknown artist"}
             </Text>
             <TouchableOpacity
               onPress={handleToggleFollow}

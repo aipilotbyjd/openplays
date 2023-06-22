@@ -8,6 +8,7 @@ import {
 import React, { useEffect, useState } from "react";
 import Upper from "../upper";
 import Bottom from "../bottom";
+import AudioPlay from "../audio";
 
 interface Song {
   id: string;
@@ -32,14 +33,19 @@ const MusicPlays = (props: PlaysVOProps) => {
   const [upper, setUpper] = useState<{ name: string; fullname: string } | null>(
     null
   );
+  const [audiopost, setAudioPost] = useState<{
+    name: string;
+    artist: string;
+  } | null>(null);
 
   // Effects
   useEffect(() => {
     if (props.item) {
       setPost(props);
       // Create a new object with 'name' and 'fullname' properties from props.item
-      const { name, fullname } = props.item;
+      const { name, fullname, artist } = props.item;
       setUpper({ name, fullname });
+      setAudioPost({ name, artist });
     }
   }, [props]);
 
@@ -59,7 +65,7 @@ const MusicPlays = (props: PlaysVOProps) => {
           <Bottom />
         </View>
         <View style={styles.emptyContainer}>
-          
+          <AudioPlay audiopost={audiopost} />
         </View>
       </ImageBackground>
     </View>
