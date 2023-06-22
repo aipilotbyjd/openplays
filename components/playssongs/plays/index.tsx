@@ -58,7 +58,9 @@ const MusicPlays = (props: PlaysVOProps) => {
         <View style={styles.bottomContainer}>
           <Bottom />
         </View>
-        <View style={styles.emptyContainer}></View>
+        <View style={styles.emptyContainer}>
+          
+        </View>
       </ImageBackground>
     </View>
   );
