@@ -69,7 +69,9 @@ const Upper = (upper: any) => {
             className="text-white text-xs ml-2"
             style={{ fontFamily: "LilitaOne" }}
           >
-            {upper.upper.fullname ? upper.upper.fullname : undefined}
+            {upper && upper.upper && upper.upper.fullname
+              ? upper.upper.fullname
+              : undefined}
           </Text>
         </View>
 
