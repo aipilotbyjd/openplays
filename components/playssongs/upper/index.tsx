@@ -1,5 +1,5 @@
-import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
+import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const windowWidth = Dimensions.get("window").width;
@@ -8,38 +8,49 @@ const fixHeight = windowHeight / 3;
 
 const Upper = (upper: any) => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const opacityValue = new Animated.Value(0);
+  const opacityValues = [
+    useState(new Animated.Value(0))[0],
+    useState(new Animated.Value(0))[0],
+  ];
 
   const textLines = [
     "Hey girl, are you all right",
     "Come near me, I won't bite",
     "I find you sexy",
-    "That's why I'm awake whole night",
+    "That's why I'm awake the whole night",
     // Add more lines if needed
   ];
 
   useEffect(() => {
-    console.log(upper);
-    if (currentLineIndex < textLines.length) {
-      animateText();
-    }
-  }, [currentLineIndex]);
+    animateText();
+  }, []);
 
   const animateText = () => {
     Animated.sequence([
-      Animated.timing(opacityValue, {
+      Animated.timing(opacityValues[0], {
         toValue: 1,
-        duration: 500, // Adjust the duration as needed
+        duration: 1000, // Adjust the duration as needed
         useNativeDriver: true,
       }),
-      Animated.delay(3000), // Adjust the delay between lines as needed
-      Animated.timing(opacityValue, {
+      Animated.delay(5000), // Adjust the delay between lines as needed
+      Animated.timing(opacityValues[0], {
         toValue: 0,
-        duration: 500, // Adjust the duration as needed
+        duration: 1000, // Adjust the duration as needed
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacityValues[1], {
+        toValue: 1,
+        duration: 1000, // Adjust the duration as needed
+        useNativeDriver: true,
+      }),
+      Animated.delay(5000), // Adjust the delay between lines as needed
+      Animated.timing(opacityValues[1], {
+        toValue: 0,
+        duration: 1000, // Adjust the duration as needed
         useNativeDriver: true,
       }),
     ]).start(() => {
-      setCurrentLineIndex((prevIndex) => prevIndex + 1);
+      setCurrentLineIndex((prevIndex) => (prevIndex + 2) % textLines.length);
     });
   };
 
@@ -51,7 +62,7 @@ const Upper = (upper: any) => {
         end={{ x: 0, y: 1 }}
         locations={[0.1, 0.9]}
         className="absolute"
-        style={{ width: windowWidth, height: fixHeight }}
+        style={{ width: windowWidth, height: fixHeight - 80 }}
       >
         <View className="flex flex-row items-center justify-center py-2">
           <Text
@@ -62,26 +73,39 @@ const Upper = (upper: any) => {
           </Text>
         </View>
 
-        <View className="flex flex-row items-center justify-center py-2">
-          {textLines.map((line, index) => (
-            <Animated.View
-              key={index}
+        <View className="flex flex-column items-center justify-center py-2">
+          <Animated.View
+            style={{
+              opacity: opacityValues[0],
+              marginBottom: 8,
+            }}
+          >
+            <Text
               style={{
-                opacity: opacityValue,
-                marginBottom: 8,
+                color: "white",
+                fontSize: 14,
+                fontFamily: "LilitaOne",
               }}
             >
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 14,
-                  fontFamily: "LilitaOne",
-                }}
-              >
-                {index === currentLineIndex ? line : ""}
-              </Text>
-            </Animated.View>
-          ))}
+              {textLines[currentLineIndex]}
+            </Text>
+          </Animated.View>
+          <Animated.View
+            style={{
+              opacity: opacityValues[1],
+              marginBottom: 8,
+            }}
+          >
+            <Text
+              style={{
+                color: "white",
+                fontSize: 14,
+                fontFamily: "LilitaOne",
+              }}
+            >
+              {textLines[(currentLineIndex + 1) % textLines.length]}
+            </Text>
+          </Animated.View>
         </View>
       </LinearGradient>
     </View>
