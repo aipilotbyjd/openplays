@@ -57,10 +57,10 @@ const Upper = (upper: any) => {
   return (
     <View>
       <LinearGradient
-        colors={["#3CA55C", "#B5AC49"]}
+        colors={["#222222", "#222222"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
-        locations={[0.1, 0.9]}
+        locations={[0.3, 0.7]}
         className="absolute"
         style={{ width: windowWidth, height: fixHeight - 80 }}
       >

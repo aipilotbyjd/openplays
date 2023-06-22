@@ -38,7 +38,7 @@ const MusicPlays = (props: PlaysVOProps) => {
     name: string;
     artist: string;
   } | null>(null);
-  const [isAudio, setIsAudio] = useState(false);
+  const [isAudio, setIsAudio] = useState(true);
 
   // Effects
   useEffect(() => {
@@ -106,8 +106,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 1, // Use flex: 1 to make bottomContainer take remaining height
-    backgroundColor: "pink",
-    opacity: 0.7,
+    backgroundColor: "#f8f4a6",
   },
   emptyContainer: {
     flex: 1, // Use flex: 1 to make emptyContainer take remaining height

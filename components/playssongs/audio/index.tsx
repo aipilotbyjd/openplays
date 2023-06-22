@@ -107,10 +107,10 @@ const AudioPlay = (audiopost: any) => {
   return (
     <>
       <LinearGradient
-        colors={["#3CA55C", "#B5AC49", "#46FFF9"]}
+        colors={["#222222", "#222222"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
-        locations={[0, 1, 0]}
+        locations={[0, 1]}
         className="absolute flex-row items-center px-4 pb-24"
         style={{ width: windowWidth, height: fixHeight }}
       >
