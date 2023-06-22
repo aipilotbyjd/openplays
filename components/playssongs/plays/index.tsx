@@ -53,7 +53,6 @@ const MusicPlays = (props: PlaysVOProps) => {
           <Upper upper={upper} />
         </View>
         <View></View>
-        <View></View>
       </ImageBackground>
     </View>
   );
