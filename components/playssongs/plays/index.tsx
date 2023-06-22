@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Upper from "../upper";
+import Bottom from "../bottom";
 
 interface Song {
   id: string;
@@ -48,11 +49,14 @@ const MusicPlays = (props: PlaysVOProps) => {
         source={{
           uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT99TYyxY9BY6UD5plN1vhRyVGJJrEnq5rou2_qh7Nr1TXpd3ZX3DeMGaT0QE3OxVQaxPE&usqp=CAU",
         }}
+        className="flex-1"
       >
-        <View>
+        <View className="flex-1">
           <Upper upper={upper} />
         </View>
-        <View></View>
+        <View className="flex-1">
+          <Bottom />
+        </View>
       </ImageBackground>
     </View>
   );
