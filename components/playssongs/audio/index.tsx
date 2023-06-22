@@ -111,7 +111,7 @@ const AudioPlay = (audiopost: any) => {
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         locations={[0, 1, 0]}
-        className="absolute flex-row items-center px-4 top-10 pb-24"
+        className="absolute flex-row items-center px-4 pb-24"
         style={{ width: windowWidth, height: fixHeight }}
       >
         <View className="flex-1">
