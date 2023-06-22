@@ -38,7 +38,7 @@ const MusicPlays = (props: PlaysVOProps) => {
     name: string;
     artist: string;
   } | null>(null);
-  const [isAudio, setIsAudio] = useState(true);
+  const [isAudio, setIsAudio] = useState(false);
 
   // Effects
   useEffect(() => {
@@ -74,8 +74,11 @@ const MusicPlays = (props: PlaysVOProps) => {
               resizeMode={ResizeMode.CONTAIN}
               shouldPlay
               isLooping
-              style={{ width: "100%" }}
-              className="h-[150%] pt-10"
+              style={{
+                width: "98%",
+                height: "100%",
+                alignSelf: "center",
+              }}
             />
           )}
         </View>
@@ -103,7 +106,8 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 1, // Use flex: 1 to make bottomContainer take remaining height
-    backgroundColor: "black",
+    backgroundColor: "pink",
+    opacity: 0.7,
   },
   emptyContainer: {
     flex: 1, // Use flex: 1 to make emptyContainer take remaining height
