@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import Upper from "../upper";
 import Bottom from "../bottom";
 import AudioPlay from "../audio";
+import { ResizeMode, Video } from "expo-av";
 
 interface Song {
   id: string;
@@ -37,6 +38,7 @@ const MusicPlays = (props: PlaysVOProps) => {
     name: string;
     artist: string;
   } | null>(null);
+  const [isAudio, setIsAudio] = useState(true);
 
   // Effects
   useEffect(() => {
@@ -62,7 +64,20 @@ const MusicPlays = (props: PlaysVOProps) => {
           <Upper upper={upper} />
         </View>
         <View style={styles.bottomContainer}>
-          <Bottom />
+          {isAudio ? (
+            <Bottom />
+          ) : (
+            <Video
+              source={{
+                uri: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+              }} // Replace with your video URL
+              resizeMode={ResizeMode.CONTAIN}
+              shouldPlay
+              isLooping
+              style={{ width: "100%" }}
+              className="h-[150%] pt-10"
+            />
+          )}
         </View>
         <View style={styles.emptyContainer}>
           <AudioPlay audiopost={audiopost} />
