@@ -16,8 +16,11 @@ const Bottom = () => {
     <View style={styles.main1}>
       <ImageBackground
         source={require("../../../assets/images/song.jpg")}
-        resizeMode="cover"
-        style={{ width: "100%", opacity: 1, height: fixHeight + 40 }}
+        resizeMode="contain"
+        style={{
+          width: "100%",
+          height: fixHeight + 40,
+        }}
       />
     </View>
   );
@@ -27,6 +30,6 @@ export default Bottom;
 
 const styles = StyleSheet.create({
   main1: {
-    height: 400,
+    height: fixHeight + 45,
   },
 });
